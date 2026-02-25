@@ -14,9 +14,9 @@ npm run dev
 - Vite (build tool)
 
 
-## Data structure — why I went with normalized state
+## Data structure  why normalized state is used
 
-My first instinct was to store nodes as a nested tree, which feels natural for a tree UI. But I ran into a problem pretty quickly: **the feature requires cross-linking nodes**, which breaks the tree structure entirely. Once node A can point to node C anywhere in the tree, you don't have a tree anymore — you have a directed graph.
+My first instinct was to store nodes as a nested tree, which feels natural for a tree UI. But I ran into a problem pretty quickly: **the feature requires cross-linking nodes**, which breaks the tree structure entirely. Once node A can point to node C anywhere in the tree, you don't have a tree anymore, you have a directed graph.
 
 Each node stores its own `childIds` and an optional `linkedToId` for cross-links. There's also a `parentId` for deletion so you can detach a node from its parent without traversing the whole graph to find it.
 
